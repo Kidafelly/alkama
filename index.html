@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alkama Employment Agency Limited</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Section */
+        .header {
+            background: rgba(30, 60, 114, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        .header .row {
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header.scrolled {
+            background: rgba(30, 60, 114, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .social-icons {
+            margin: 0;
+        }
+
+        .header .social-icons a {
+            width: 22px;
+            height: 22px;
+            line-height: 22px;
+            margin: 0 2px;
+            font-size: 0.6rem;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+        }
+
+        .header .social-icons a:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .header-brand {
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            text-align: center;
+            display: block;
+        }
+
+        .header-brand:hover {
+            color: #4CAF50;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4CAF50 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="cityscape" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%23ffffff;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%23000000;stop-opacity:0.3"/></linearGradient></defs><rect width="60" height="200" x="100" y="400" fill="url(%23cityscape)"/><rect width="80" height="250" x="180" y="350" fill="url(%23cityscape)"/><rect width="70" height="300" x="280" y="300" fill="url(%23cityscape)"/><rect width="90" height="180" x="370" y="420" fill="url(%23cityscape)"/><rect width="75" height="280" x="480" y="320" fill="url(%23cityscape)"/><rect width="85" height="320" x="580" y="280" fill="url(%23cityscape)"/><rect width="65" height="240" x="690" y="360" fill="url(%23cityscape)"/><rect width="95" height="290" x="780" y="310" fill="url(%23cityscape)"/><rect width="70" height="200" x="900" y="400" fill="url(%23cityscape)"/><rect width="80" height="260" x="990" y="340" fill="url(%23cityscape)"/></svg>') no-repeat center bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .logo i {
+            font-size: 4rem;
+            background: linear-gradient(45deg, #1e3c72, #4CAF50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero h2 {
+            color: #4CAF50;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-tagline {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        .airplane {
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            font-size: 6rem;
+            color: rgba(255, 255, 255, 0.7);
+            animation: fly 8s linear infinite;
+        }
+
+        /* Opportunities Section */
+        .opportunities {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .section-title .subtitle {
+            font-size: 1.8rem;
+            color: #d32f2f;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .country-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .country-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .country-card:hover::before {
+            left: 100%;
+        }
+
+        .country-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .country-card i {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+
+        .country-card h4 {
+            color: #1e3c72;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .about h2 {
+            color: #4CAF50;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .feature-list li::before {
+            content: '✈️';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            transform: translateX(10px);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .social-icons {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1e3c72, #4CAF50);
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fly {
+            0% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(50px) rotate(5deg); }
+            50% { transform: translateX(0) rotate(0deg); }
+            75% { transform: translateX(-50px) rotate(-5deg); }
+            100% { transform: translateX(0) rotate(0deg); }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #45a049, #4CAF50);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero h2 { font-size: 1.2rem; }
+            .airplane { font-size: 4rem; top: 10%; right: 5%; }
+            .country-card { margin-bottom: 1rem; }
+            .contact-card { padding: 2rem; }
+            .header-brand { font-size: 0.75rem; }
+            .header .social-icons a { 
+                width: 18px; 
+                height: 18px; 
+                line-height: 18px; 
+                font-size: 0.5rem; 
+                margin: 0 1px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 { font-size: 2rem; }
+            .section-title h2 { font-size: 2rem; }
+            .logo { width: 120px; height: 120px; }
+            .logo i { font-size: 3rem; }
+            .header-brand { font-size: 0.7rem; }
+            .header .social-icons a { 
+                width: 16px; 
+                height: 16px; 
+                line-height: 16px; 
+                font-size: 0.45rem; 
+                margin: 0 1px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-8 text-center">
+                    <a href="#hero" class="header-brand">Alkama Employment Agency</a>
+                </div>
+                <div class="col-4 text-end">
+                    <div class="social-icons">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:alkamaemploymentagencyltd@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+254722595446" title="Phone"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="airplane">
+            <i class="fas fa-plane"></i>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center hero-content">
+                    <div class="logo-container">
+                        <div class="logo">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                    </div>
+                    <h1>ALKAMA EMPLOYMENT</h1>
+                    <h2>AGENCY LIMITED</h2>
+                    <p class="hero-tagline">Connecting Global Talent with International Opportunities</p>
+                    <a href="#contact" class="btn btn-primary btn-lg">Get Started Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Employment Opportunities Section -->
+    <section class="opportunities" id="opportunities">
+        <div class="container">
+            <div class="section-title">
+                <h2>EMPLOYMENT</h2>
+                <div class="subtitle">Opportunities In:-</div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="country-card">
+                        <i class="fas fa-building"></i>
+                        <h4>Dubai</h4>
+                        <p>Explore exciting career opportunities in the UAE's business hub with competitive packages and world-class facilities.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="country-card">
+                        <i class="fas fa-oil-well"></i>
+                        <h4>Qatar</h4>
+                        <p>Join Qatar's thriving economy with opportunities in construction, hospitality, and energy sectors.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="country-card">
+                        <i class="fas fa-landmark"></i>
+                        <h4>Saudi Arabia</h4>
+                        <p>Be part of Saudi Arabia's Vision 2030 with roles in mega projects and emerging industries.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="country-card">
+                        <i class="fas fa-flag"></i>
+                        <h4>Canada</h4>
+                        <p>Discover permanent residency pathways and career growth in Canada's welcoming environment.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="country-card">
+                        <i class="fas fa-monument"></i>
+                        <h4>Europe</h4>
+                        <p>Access diverse European markets with opportunities across multiple countries and industries.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="country-card">
+                        <i class="fas fa-crown"></i>
+                        <h4>Jordan</h4>
+                        <p>Explore opportunities in Jordan's stable economy with positions in healthcare, education, and services.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="country-card">
+                        <i class="fas fa-mosque"></i>
+                        <h4>Egypt</h4>
+                        <p>Join Egypt's growing economy with roles in tourism, construction, and agricultural sectors.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="country-card">
+                        <i class="fas fa-building"></i>
+                        <h4>Oman</h4>
+                        <p>Discover career opportunities in Oman's diversifying economy and beautiful coastal environment.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="country-card">
+                        <i class="fas fa-mountain"></i>
+                        <h4>Lebanon</h4>
+                        <p>Explore opportunities in Lebanon's vibrant business sector and cultural hub of the Middle East.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>About Alkama Employment Agency</h2>
+                    <p>We are a leading employment agency specializing in international job placements. Our mission is to bridge the gap between talented professionals and global opportunities.</p>
+                    <p>With years of experience and a network of trusted partners worldwide, we ensure that both employers and job seekers find their perfect match.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h3>Why Choose Us?</h3>
+                    <ul class="feature-list">
+                        <li>Registered with Kenya Government</li>
+                        <li>Comprehensive pre-departure briefing</li>
+                        <li>24/7 support for our candidates</li>
+                        <li>Transparent process with no hidden fees</li>
+                        <li>Strong network of international partners</li>
+                        <li>Professional visa and documentation assistance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>CONTACT US</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-card">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Phone:</strong><br>
+                                +254 722 595 446 / +254 722 121 200
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Address:</strong><br>
+                                Ring Road Off Parkroad (Ngara), Tigoni House, 3rd Flr, RM 28<br>
+                                P.O.BOX 1441-006 Ngara
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email:</strong><br>
+                                alkamaemploymentagencyltd@gmail.com / info@alikama.co.ke
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Alkama Employment Agency Limited. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all country cards
+        document.querySelectorAll('.country-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Add floating animation to contact items
+        document.querySelectorAll('.contact-item').forEach((item, index) => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0) scale(1)';
+            });
+        });
+
+        // Add particle effect to hero section
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'absolute';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = '100%';
+            particle.style.width = '2px';
+            particle.style.height = '2px';
+            particle.style.background = 'rgba(255, 255, 255, 0.5)';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.animation = `particleFloat ${3 + Math.random() * 3}s linear forwards`;
+            
+            document.querySelector('.hero').appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 6000);
+        }
+
+        // Add CSS for particle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes particleFloat {
+                to {
+                    transform: translateY(-100vh);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
