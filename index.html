@@ -78,6 +78,7 @@
             justify-content: center;
             gap: 8px;
             flex-wrap: nowrap;
+            
         }
 
         .header .social-icons a {
@@ -101,7 +102,7 @@
         /* Navigation Tabs on the right */
         .header .nav-tabs {
             display: flex;
-            justify-content: flex-end;
+            justify-content: right;
             gap: 1.2rem;
             font-size: 1rem;
             font-weight: 500;
@@ -546,32 +547,20 @@
     <!-- Header Section -->
     <header class="header" id="header">
         <div class="container">
-            <div class="row align-items-center">
-                <!-- Brand (Left) -->
-                <div class="col-5 col-sm-4 col-lg-3">
-                    <a href="#hero" class="header-brand">Alikama Employment Agency Ltd</a>
-                </div>
+            <div class="container d-flex justify-content-between align-items-center py-2">
+    <!-- Brand -->
+    <div class="ms-3">
+        <a href="#hero" class="header-brand">Alikama Employment Agency Ltd</a>
+    </div>
 
-                <!-- Social Icons (Center) -->
-                <div class="col-3 col-sm-4 col-lg-6 d-flex justify-content-center">
-                    <div class="social-icons">
-                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="mailto:alkamaemploymentagencyltd@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                        <a href="tel:+254722595446" title="Phone"><i class="fas fa-phone"></i></a>
-                    </div>
-                </div>
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs me-3">
+        <a href="#hero">Home</a>
+        <a href="#opportunities">Services</a>
+        <a href="#contact">Contacts</a>
+    </div>
+</div>
 
-                <!-- Navigation Tabs (Right) -->
-                <div class="col-4 col-sm-4 col-lg-3 d-flex justify-content-end">
-                    <div class="nav-tabs">
-                        <a href="#hero">Home</a>
-                        <a href="#opportunities">Services</a>
-                        <a href="#contact">Contacts</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </header>
 
@@ -731,7 +720,19 @@
                 </div>
             </div>
         </div>
+
+        <!-- Social Icons  -->
+        <div class="social-icons">
+             <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+             <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+             <a href="mailto:alkamaemploymentagencyltd@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+             <a href="tel:+254722595446" title="Phone"><i class="fas fa-phone"></i></a>
+         </div>
+        </div>
+
     </section>
+
+    
 
     <!-- Footer -->
     <footer class="footer">
