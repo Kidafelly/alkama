@@ -129,7 +129,7 @@
         .hero {
             margin-top: 60px;
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4CAF50 100%);
-            min-height: calc(60vh - 50px);
+            min-height: calc(50vh - 60px);
             display: flex;
             align-items: center;
             position: relative;
@@ -153,16 +153,17 @@
             margin-bottom: 1rem;
         }
 
-        .logo {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
+       .logo {
+            background: transparent;
+            border-radius: 0;
+            width: auto;
+            height: auto;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: none;
             animation: float 3s ease-in-out infinite;
+            margin-top: 50px;
         }
 
         .logo i {
@@ -396,6 +397,7 @@
             font-weight: 600;
             border-radius: 25px;
             transition: all 0.3s ease;
+            margin-bottom: 10px;
         }
         .btn-primary:hover {
             background: linear-gradient(135deg, #45a049, #4CAF50);
